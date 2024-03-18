@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.rhap_progress-indicator {
+  background: rgb(243, 38, 38) !important;
+}
+.rhap_progress-filled {
+  background: rgb(243, 38, 38) !important;
+}
+.rhap_play-pause-button svg {
+  color: rgb(243, 38, 38) !important;
+}
+.rhap_volume-bar {
+  background: rgb(247, 118, 118) !important;
+}
+.rhap_volume-indicator {
+  background: rgb(243, 38, 38) !important;
+}

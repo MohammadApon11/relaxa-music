@@ -126,12 +126,10 @@ export const SongCard = ({ data, index }) => {
   };
 
   const deleteObject = (id) => {
-    console.log(id);
     deleteSongById(id).then((res) => {
-      // console.log(res.data);
       if (res.data.success) {
         setAlert("success");
-        setAlertMsg(res.data.msg);
+        setAlertMsg(res.data.message);
         getAllSongs().then((data) => {
           dispatch({
             type: actionType.SET_ALL_SONGS,
@@ -143,7 +141,7 @@ export const SongCard = ({ data, index }) => {
         }, 4000);
       } else {
         setAlert("error");
-        setAlertMsg(res.data.msg);
+        setAlertMsg(res.data.message);
         setTimeout(() => {
           setAlert(false);
         }, 4000);
@@ -196,7 +194,7 @@ export const SongCard = ({ data, index }) => {
         />
       </div>
 
-      <p className="text-base text-headingColor font-semibold my-2">
+      <p className="text-base text-center text-headingColor font-semibold my-2">
         {data.name.length > 25 ? `${data.name.slice(0, 25)}` : data.name}
         <span className="block text-sm text-gray-400 my-1">{data.artist}</span>
       </p>

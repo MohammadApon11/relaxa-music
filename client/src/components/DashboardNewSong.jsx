@@ -173,7 +173,7 @@ const DashboardNewSong = () => {
 
     if (!allAlbums) {
       getAllAlbums().then((data) => {
-        dispatch({ type: actionType.SET_ALL_ALBUMNS, allAlbums: data.data });
+        dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data.data });
       });
     }
   }, []);
@@ -570,7 +570,7 @@ export const AddNewAlbum = () => {
       saveNewAlbum(data).then((res) => {
         getAllAlbums().then((albumData) => {
           dispatch({
-            type: actionType.SET_ALL_ALBUMNS,
+            type: actionType.SET_ALL_ALBUMS,
             albumData: albumData.data,
           });
         });
