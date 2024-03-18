@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
-import { Home, Login, Dashboard } from "./components";
 import { app } from "./config/firebase.config";
 import { getAuth } from "firebase/auth";
 import { AnimatePresence } from "framer-motion";
 import { validateUser } from "./api";
 import { useStateValue } from "./Context/StateProvider";
 import { actionType } from "./Context/reducer";
+import { Dashboard, Home, Login } from "./pages/inejx";
 
 const App = () => {
   const firebaseAuth = getAuth(app);

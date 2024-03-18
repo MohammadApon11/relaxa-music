@@ -3,17 +3,19 @@ import { IoHome } from "react-icons/io5";
 import { NavLink, Route, Routes } from "react-router-dom";
 // import { DashboardNewSong } from ".";
 import { isActiveStyles, isNotActiveStyles } from "../utils/styles";
-import SideBar from "../components/SideBar";
-// import DashboardAlbum from "./DashboardAlbum";
-// import DashboardArtist from "./DashboardArtist";
-// import DashBoardHome from "./DashBoardHome";
-// import DashboardSongs from "./DashboardSongs";
-// import DashboardUser from "./DashboardUser";
+import {
+  Sidebar,
+  DashboardAlbums,
+  DashboardHome,
+  DashboardUser,
+  DashboardSongs,
+  DashboardArtists,
+} from "../components";
 
 const Dashboard = () => {
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center bg-primary">
-      <SideBar />
+      <Sidebar />
 
       <div className="w-[60%] my-2 p-4 flex items-center justify-evenly">
         {/* prettier-ignore */}
@@ -32,14 +34,14 @@ const Dashboard = () => {
       </div>
 
       <div className="my-4 w-full p-4">
-        {/* <Routes>
-          <Route path="/home" element={<DashBoardHome />} />
+        <Routes>
+          <Route path="/home" element={<DashboardHome />} />
           <Route path="/user" element={<DashboardUser />} />
           <Route path="/songs" element={<DashboardSongs />} />
-          <Route path="/artist" element={<DashboardArtist />} />
-          <Route path="/albums" element={<DashboardAlbum />} />
-          <Route path="/newSong" element={<DashboardNewSong />} />
-        </Routes> */}
+          <Route path="/artist" element={<DashboardArtists />} />
+          <Route path="/albums" element={<DashboardAlbums />} />
+          {/* <Route path="/newSong" element={<DashboardNewSong />} /> */}
+        </Routes>
       </div>
     </div>
   );
