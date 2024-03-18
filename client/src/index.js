@@ -21,6 +21,7 @@ import { createRoot } from "react-dom/client";
 import { StateProvider } from "./Context/StateProvider";
 import { initialState } from "./Context/initialState";
 import reducer from "./Context/reducer";
+import { UpdateContext, UpdateProvider } from "./Context/updatedFlag";
 
 const root = document.getElementById("root");
 
@@ -29,9 +30,11 @@ const render = () => {
   createRoot(root).render(
     <React.StrictMode>
       <Router>
-        <StateProvider initialState={initialState} reducer={reducer}>
-          <App />
-        </StateProvider>
+        <UpdateProvider>
+          <StateProvider initialState={initialState} reducer={reducer}>
+            <App />
+          </StateProvider>
+        </UpdateProvider>
       </Router>
     </React.StrictMode>
   );

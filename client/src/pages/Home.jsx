@@ -4,6 +4,7 @@ import { actionType } from "../Context/reducer";
 import { useStateValue } from "../Context/StateProvider";
 import { motion } from "framer-motion";
 import { Filter, Sidebar, SearchBar } from "../components";
+import { useUpdateFlag } from "../Context/updatedFlag";
 
 const Home = () => {
   const [
@@ -21,17 +22,20 @@ const Home = () => {
   ] = useStateValue();
 
   const [filteredSongs, setFilteredSongs] = useState(null);
-
+  const [allSongsHere, setAllSongsHere] = useState([]);
+  const { flag } = useUpdateFlag();
   useEffect(() => {
     if (!allSongs) {
       getAllSongs().then((data) => {
+        setAllSongsHere(data.data);
         dispatch({
           type: actionType.SET_ALL_SONGS,
           allSongs: data.data,
         });
       });
     }
-  }, []);
+    setAllSongsHere();
+  }, [flag]);
 
   useEffect(() => {
     if (searchTerm.length > 0) {
@@ -105,7 +109,9 @@ const Home = () => {
       <Filter setFilteredSongs={setFilteredSongs} />
 
       <div className="w-full h-auto flex items-center justify-evenly gap-4 flex-wrap p-4">
-        <HomeSongContainer musics={filteredSongs ? filteredSongs : allSongs} />
+        <HomeSongContainer
+          musics={filteredSongs ? filteredSongs : allSongsHere}
+        />
       </div>
     </div>
   );

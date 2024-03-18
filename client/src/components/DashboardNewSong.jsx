@@ -26,6 +26,7 @@ import { actionType } from "../Context/reducer";
 import { filterByLanguage, filters } from "../utils/supportfunctions";
 import AlertSuccess from "./AlertSuccess";
 import AlertError from "./AlertError";
+import { useUpdateFlag } from "../Context/updatedFlag";
 
 export const ImageLoader = ({ progress }) => {
   return (
@@ -150,6 +151,7 @@ const DashboardNewSong = () => {
   const [audioAsset, setAudioAsset] = useState(null);
   const [duration, setDuration] = useState(null);
   const audioRef = useRef();
+  const { flag, setFlag } = useUpdateFlag();
 
   const [
     {
@@ -247,6 +249,7 @@ const DashboardNewSong = () => {
       dispatch({ type: actionType.SET_FILTER_TERM, filterTerm: null });
       setDuration(null);
     }
+    setFlag(!flag);
   };
 
   return (

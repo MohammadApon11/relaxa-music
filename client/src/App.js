@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { getAllSongs, validateUser } from "./api";
 import { useStateValue } from "./Context/StateProvider";
 import { actionType } from "./Context/reducer";
-import { Dashboard, Home, Login } from "./pages/inejx";
+import { Dashboard, Home, Login } from "./pages/index";
 import { MusicPlayer } from "./components";
 
 const App = () => {
