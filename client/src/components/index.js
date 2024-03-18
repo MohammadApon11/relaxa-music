@@ -5,3 +5,4 @@ export { default as DashboardHome } from "./DashboardHome";
 export { default as DashboardSongs } from "./DashboardSongs";
 export { default as DashboardUser } from "./DashboardUser";
 export { default as DashboardUserCard } from "./DashboardUserCard";
+export { default as DashboardNewSong } from "./DashboardNewSong";

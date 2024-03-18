@@ -14,7 +14,7 @@ const AlertSuccess = ({ msg }) => {
       <div className="w-460  bg-card rounded-md shadow-md backdrop-blur-md px-4 py-2 flex items-center gap-4">
         <div className="w-[4px] h-10 bg-green-500 rounded-md"></div>
         <BsEmojiSmile className="text-xl text-green-500" />
-        <p className="text-base font-semibold text-textColor">
+        <p className="text-base font-semibold text-black">
           {msg?.length > 50 ? `${msg?.slice(0, 50)}...` : msg}
         </p>
       </div>

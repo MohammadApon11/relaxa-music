@@ -1,7 +1,6 @@
 import React from "react";
 import { IoHome } from "react-icons/io5";
 import { NavLink, Route, Routes } from "react-router-dom";
-// import { DashboardNewSong } from ".";
 import { isActiveStyles, isNotActiveStyles } from "../utils/styles";
 import {
   Sidebar,
@@ -10,8 +9,8 @@ import {
   DashboardUser,
   DashboardSongs,
   DashboardArtists,
+  DashboardNewSong,
 } from "../components";
-
 const Dashboard = () => {
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center bg-primary">
@@ -40,7 +39,7 @@ const Dashboard = () => {
           <Route path="/songs" element={<DashboardSongs />} />
           <Route path="/artist" element={<DashboardArtists />} />
           <Route path="/albums" element={<DashboardAlbums />} />
-          <Route path="/newSong" element={<DashboardHome />} />
+          <Route path="/newSong" element={<DashboardNewSong />} />
         </Routes>
       </div>
     </div>
