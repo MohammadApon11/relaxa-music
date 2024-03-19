@@ -7,7 +7,7 @@ import { getAllSongs, validateUser } from "./api";
 import { useStateValue } from "./Context/StateProvider";
 import { actionType } from "./Context/reducer";
 import { Dashboard, Home, Login, Recommeded, Trending } from "./pages/index";
-import { MusicPlayer } from "./components";
+import { MusicPlayer, UserProfile } from "./components";
 import Signup from "./pages/Signup";
 
 const App = () => {
@@ -62,6 +62,7 @@ const App = () => {
           <Route path="/recommended" element={<Recommeded />} />
           <Route path="/trending" element={<Trending />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
+          <Route path="/userProfile" element={<UserProfile />} />
         </Routes>
         {isSongPlaying && (
           <motion.div

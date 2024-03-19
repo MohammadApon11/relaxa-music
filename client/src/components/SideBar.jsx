@@ -30,7 +30,7 @@ const SideBar = () => {
     <header className="flex items-center w-full p-4 md:py-2 md:px-6">
       <ul className="flex items-center justify-center ml-7">
         {/* prettier-ignore */}
-        <li className="mx-5 text-lg"><NavLink to={'/recommended'} className={({isActive}) => isActive ? isActiveStyles : isNotActiveStyles}><MdOutlineRecommend/>Recommended</NavLink></li>
+        <li className="mx-5 text-lg "><NavLink to={'/recommended'} className={({isActive}) => isActive ? isActiveStyles : isNotActiveStyles}><MdOutlineRecommend/>Recommended</NavLink></li>
         {/* prettier-ignore */}
         <li className="mx-5 text-lg"><NavLink to={'/trending'} className={({isActive}) => isActive ? isActiveStyles : isNotActiveStyles}><IoIosTrendingUp/>Trending</NavLink></li>
       </ul>
@@ -68,9 +68,6 @@ const SideBar = () => {
                 Profile
               </p>
             </NavLink>
-            <p className="text-base  hover:font-semibold duration-150 transition-all ease-in-out">
-              My Favourites
-            </p>
             <hr />
             {user?.user.role === "admin" && (
               <>

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { app } from "../config/firebase.config";
@@ -13,13 +13,16 @@ import { actionType } from "../Context/reducer";
 import { validateUser } from "../api";
 import { useForm } from "react-hook-form";
 import { IoMdMusicalNotes } from "react-icons/io";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 
 const Signup = ({ setAuth }) => {
   const firebaseAuth = getAuth(app);
   const provider = new GoogleAuthProvider();
+  const [error, setError] = useState("");
   const [{ user }, dispatch] = useStateValue();
+  const [type, setType] = useState("password");
   const navigate = useNavigate();
-
+  console.log(error);
   const loginWithGoogle = async () => {
     await signInWithPopup(firebaseAuth, provider).then((userCred) => {
       handleAuthResult(userCred);
@@ -27,16 +30,20 @@ const Signup = ({ setAuth }) => {
   };
 
   const loginWithEmailPassword = async (email, password) => {
+    setError("");
     await signInWithEmailAndPassword(firebaseAuth, email, password)
       .then((userCred) => {
         handleAuthResult(userCred);
       })
       .catch((error) => {
-        console.error(
-          "Error signing in with email and password:",
-          error.message
-        );
-        // Handle error (e.g., show error message to user)
+        if (error.message === "Firebase: Error (auth/invalid-email).") {
+          setError(
+            "Email or Password is Incorrect! Please Provide Valid Credential"
+          );
+        } else {
+          setError(error.message);
+          console.log(error.message);
+        }
       });
   };
 
@@ -113,18 +120,44 @@ const Signup = ({ setAuth }) => {
               placeholder="Email"
             />
           </div>
+          {errors.password && (
+            <span className="text-red-500 text-sm -mt-2">
+              Email is required
+            </span>
+          )}
+          {error && <span className="text-red-500 text-sm -mt-2">{error}</span>}
           <div>
             <p className="text-white text-[14px] mb-3">
               Password <span className="text-red-500">*</span>
             </p>
-            <input
-              className="w-[360px] p-4 bg-transparent border border-gray-700 text-textColor outline-none"
-              type="password"
-              {...register("password", { required: true })}
-              placeholder="Type Your Password"
-            />
+            <div className="w-[360px] relative">
+              <input
+                className="w-full p-4 bg-transparent border border-gray-700 text-textColor outline-none"
+                type={type}
+                {...register("password", { required: true })}
+                placeholder="Type Your Password"
+              />
+              <div className="absolute top-5 text-white text-xl right-8">
+                {type === "password" ? (
+                  <FaRegEyeSlash
+                    className="cursor-pointer"
+                    onClick={() => setType("text")}
+                  />
+                ) : (
+                  <FaRegEye
+                    className="cursor-pointer"
+                    onClick={() => setType("password")}
+                  />
+                )}
+              </div>
+            </div>
           </div>
-          {errors.exampleRequired && <span>This field is required</span>}
+          {errors.password && (
+            <span className="text-red-500 text-sm -mt-2">
+              Password is required
+            </span>
+          )}
+          {error && <span className="text-red-500 text-sm -mt-2">{error}</span>}
           <input
             className="p-3 flex items-center justify-center mt-5 bg-[#25a56a] text-white font-semibold cursor-pointer"
             type="submit"

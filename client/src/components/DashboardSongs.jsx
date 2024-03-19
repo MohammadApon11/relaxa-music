@@ -54,7 +54,7 @@ const DashboardSongs = () => {
         )}
         <input
           type="text"
-          placeholder="Search here"
+          placeholder="Search by song name album name artist name..."
           className={`w-52 px-4 py-2 border ${
             isFocus ? "border-gray-500 shadow-md" : "border-gray-300"
           } rounded-md bg-transparent outline-none duration-150 transition-all ease-in-out text-base text-textColor font-semibold`}
