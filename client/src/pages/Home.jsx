@@ -119,9 +119,13 @@ const Home = () => {
         {/* <Filter setFilteredSongs={setFilteredSongs} /> */}
 
         <div className="w-full h-auto flex items-center justify-evenly gap-4 flex-wrap p-4 mt-9">
-          <HomeSongContainer
-            musics={filteredSongs ? filteredSongs : allSongsHere}
-          />
+          {allSongsHere ? (
+            <HomeSongContainer
+              musics={filteredSongs ? filteredSongs : allSongsHere}
+            />
+          ) : (
+            <span className="text-textColor">Need a reload becouase my data is deploy on vercel and sometimes vercel send response to much late...</span>
+          )}
         </div>
       </div>
     </div>
@@ -172,7 +176,6 @@ export const HomeSongContainer = ({ musics }) => {
               {data.artist}
             </span>
           </p>
-          
         </motion.div>
       ))}
     </>

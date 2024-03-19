@@ -91,7 +91,7 @@ const Signup = ({ setAuth }) => {
 
   return (
     <div className="flex items-center justify-center h-[100vh]">
-      <div className="px-14 py-12 bg-[#141718]">
+      <div className="px-14 py-6 bg-[#141718]">
         <IoMdMusicalNotes className="mx-auto text-red-500 text-4xl" />
         <h1 className="text-white text-center text-4xl mt-3">
           Sign in to relaxa music
@@ -103,6 +103,18 @@ const Signup = ({ setAuth }) => {
           >
             <FcGoogle className="text-xl" />
             <p>Signup with Google</p>
+          </div>
+        </div>
+        <div className=" mt-5 text-textColor flex items-center justify-between border">
+          <div className="border p-3">
+            <p>Admin credentials:</p>
+            <p>email: wegro@admin.com</p>
+            <p>email: 12345aA!</p>
+          </div>
+          <div className="border p-3">
+            <p>Member credentials:</p>
+            <p>email: wegro@member.com</p>
+            <p>email: 12345aA!</p>
           </div>
         </div>
         <form
