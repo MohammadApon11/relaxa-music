@@ -53,7 +53,7 @@ const DashboardUserCard = ({ data, index }) => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3, delay: index * 0.1 }}
-      className="relative w-full rounded-md flex items-center justify-between py-4 bg-lightOverlay cursor-pointer hover:bg-card hover:shadow-md"
+      className="relative w-full rounded-md flex items-center justify-between py-4 bg-lightOverlay cursor-pointer hover:bg-gray-700 hover:shadow-md"
     >
       {data._id !== user?.user._id && (
         <motion.div
@@ -82,7 +82,7 @@ const DashboardUserCard = ({ data, index }) => {
         {data._id !== user?.user._id && (
           <motion.p
             whileTap={{ scale: 0.75 }}
-            className="text-[10px]  font-semibold text-textColor px-1 bg-purple-200 rounded-sm hover:shadow-md"
+            className="text-[10px]  font-semibold text-black px-1 bg-purple-200 rounded-sm hover:shadow-md"
             onClick={() => setIsUpdateRole(true)}
           >
             {data.role === "admin" ? "Member" : "Admin"}

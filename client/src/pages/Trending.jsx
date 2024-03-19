@@ -83,11 +83,11 @@ export const TrendingSongContainer = ({ musics }) => {
                 />
               </div>
 
-              <p className="text-base text-headingColor font-semibold my-2">
+              <p className="text-base text-black font-semibold my-2 text-center">
                 {data.name.length > 25
                   ? `${data.name.slice(0, 25)}`
                   : data.name}
-                <span className="block text-sm text-gray-400 my-1">
+                <span className="block text-sm text-black my-1 text-center">
                   {data?.artist}
                 </span>
               </p>
