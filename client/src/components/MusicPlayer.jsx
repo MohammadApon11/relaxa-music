@@ -39,7 +39,8 @@ const MusicPlayer = () => {
   };
 
   const nextTrack = () => {
-    if (song > allSongs.length) {
+    console.log(song);
+    if (song > allSongs.length - 2) {
       dispatch({
         type: actionType.SET_SONG,
         song: 0,
@@ -186,8 +187,8 @@ export const PlayListCard = () => {
 
   return (
     <div className="absolute left-4 bottom-24 gap-2 py-2 w-350 max-w-[350px] h-510 max-h-[510px] flex flex-col overflow-y-scroll scrollbar-thin rounded-md shadow-md bg-primary">
-      {allSongs.length > 0 ? (
-        allSongs.map((music, index) => (
+      {allSongs?.length > 0 ? (
+        allSongs?.map((music, index) => (
           <motion.div
             initial={{ opacity: 0, translateX: -50 }}
             animate={{ opacity: 1, translateX: 0 }}

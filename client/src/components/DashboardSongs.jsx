@@ -14,7 +14,7 @@ const DashboardSongs = () => {
   const [isFocus, setIsFocus] = useState(false);
   const [filteredSongs, setFilteredSongs] = useState(null);
 
-  const [{ allSongs }, dispatch] = useStateValue();
+  const [{ allSongs, user }, dispatch] = useStateValue();
 
   useEffect(() => {
     if (!allSongs) {
@@ -44,12 +44,14 @@ const DashboardSongs = () => {
   return (
     <div className="w-full p-4 flex items-center justify-center flex-col">
       <div className="w-full flex justify-center items-center gap-24">
-        <NavLink
-          to={"/dashboard/newSong"}
-          className="flex items-center px-4 py-3 border rounded-md border-gray-300 hover:border-gray-400 hover:shadow-md cursor-pointer text-textColor"
-        >
-          <IoAdd />
-        </NavLink>
+        {user?.user?.role === "admin" && (
+          <NavLink
+            to={"/dashboard/newSong"}
+            className="flex items-center px-4 py-3 border rounded-md border-gray-300 hover:border-gray-400 hover:shadow-md cursor-pointer text-textColor"
+          >
+            <IoAdd />
+          </NavLink>
+        )}
         <input
           type="text"
           placeholder="Search here"
@@ -108,7 +110,7 @@ export const SongCard = ({ data, index }) => {
   const [alert, setAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState(null);
 
-  const [{ allSongs, song, isSongPlaying }, dispatch] = useStateValue();
+  const [{ allSongs, song, isSongPlaying, user }, dispatch] = useStateValue();
 
   const addSongToContext = () => {
     if (!isSongPlaying) {
@@ -199,11 +201,16 @@ export const SongCard = ({ data, index }) => {
         <span className="block text-sm text-gray-400 my-1">{data.artist}</span>
       </p>
 
-      <div className="w-full absolute bottom-2 right-2 flex items-center justify-between px-4">
-        <motion.i whileTap={{ scale: 0.75 }} onClick={() => setIsDeleted(true)}>
-          <IoTrash className="text-base text-red-400 drop-shadow-md hover:text-red-600" />
-        </motion.i>
-      </div>
+      {user?.user?.role === "admin" && (
+        <div className="w-full absolute bottom-2 right-2 flex items-center justify-between px-4">
+          <motion.i
+            whileTap={{ scale: 0.75 }}
+            onClick={() => setIsDeleted(true)}
+          >
+            <IoTrash className="text-base text-red-400 drop-shadow-md hover:text-red-600" />
+          </motion.i>
+        </div>
+      )}
 
       {alert && (
         <>

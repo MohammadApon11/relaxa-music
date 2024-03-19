@@ -1,7 +1,7 @@
 export const isActiveStyles =
-  "text-lg text-headingColor font-semibold hover:text-headingColor duration-100 transition-all ease-in-out";
+  "text-lg text-headingColor font-semibold hover:text-headingColor duration-100 transition-all ease-in-out flex items-center gap-3 hover:text-[#25a56a] text-[#25a56a]";
 export const isNotActiveStyles =
-  "text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out";
+  "text-lg text-textColor hover:text-headingColor duration-100 transition-all ease-in-out flex items-center gap-3 hover:text-[#25a56a]";
 
 export const bgColors = [
   "#E9E2FF",

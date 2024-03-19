@@ -19,7 +19,7 @@ const Filter = ({ setFilteredSongs }) => {
 
     if (!allAlbums) {
       getAllAlbums().then((data) => {
-        dispatch({ type: actionType.SET_ALL_ALBUMNS, allAlbums: data.data });
+        dispatch({ type: actionType.SET_ALL_ALBUMS, allAlbums: data.data });
       });
     }
   }, []);

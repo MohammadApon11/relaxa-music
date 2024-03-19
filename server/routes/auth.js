@@ -9,11 +9,13 @@ router.get("/login", async (req, res) => {
   const token = req.headers.authorization.split(" ")[1];
   try {
     const decodeValue = await admin.auth().verifyIdToken(token);
+
     if (!decodeValue) {
       return res.status(500).json({ message: "Unauthorized" });
     } else {
       // checking user exist or not
       const userExist = await user.findOne({ user_id: decodeValue.user_id });
+      console.log("userExist", userExist);
       if (!userExist) {
         newUserData(decodeValue, req, res);
       } else {
@@ -27,16 +29,17 @@ router.get("/login", async (req, res) => {
 
 const newUserData = async (decodeValue, req, res) => {
   const newUser = new user({
-    name: decodeValue.name,
-    email: decodeValue.email,
-    imageURL: decodeValue.picture,
-    user_id: decodeValue.user_id,
-    email_varified: decodeValue.email_verified,
+    name: decodeValue?.name,
+    email: decodeValue?.email,
+    imageURL: decodeValue?.picture,
+    user_id: decodeValue?.user_id,
+    email_varified: decodeValue?.email_verified,
     role: "memeber",
-    auth_time: decodeValue.auth_time,
+    auth_time: decodeValue?.auth_time,
   });
   try {
     const savedUser = await newUser.save();
+    console.log("savedUser", savedUser);
     res.status(200).send({ user: savedUser });
   } catch (error) {
     res.status(400).send({ success: false, message: error });

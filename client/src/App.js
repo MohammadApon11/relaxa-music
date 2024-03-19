@@ -6,16 +6,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { getAllSongs, validateUser } from "./api";
 import { useStateValue } from "./Context/StateProvider";
 import { actionType } from "./Context/reducer";
-import { Dashboard, Home, Login } from "./pages/index";
+import { Dashboard, Home, Login, Recommeded, Trending } from "./pages/index";
 import { MusicPlayer } from "./components";
+import Signup from "./pages/Signup";
 
 const App = () => {
   const firebaseAuth = getAuth(app);
   const navigate = useNavigate();
-  const [{ user, allSongs, song, isSongPlaying, miniPlayer }, dispatch] =
-    useStateValue();
-  const [isLoading, setIsLoading] = useState(false);
-  const [authState, setAuthState] = useState(false);
+  const [{ user, allSongs, isSongPlaying }, dispatch] = useStateValue();
 
   const [auth, setAuth] = useState(
     false || window.localStorage.getItem("auth" === "true")
@@ -25,9 +23,7 @@ const App = () => {
     firebaseAuth.onAuthStateChanged((userCred) => {
       if (userCred) {
         userCred.getIdToken().then((token) => {
-          console.log(token);
           validateUser(token).then((data) => {
-            // console.log(data);
             dispatch({
               type: actionType.SET_USER,
               user: data,
@@ -61,7 +57,10 @@ const App = () => {
       <div className="h-auto min-w-[680px] bg-primary">
         <Routes>
           <Route path="/login" element={<Login setAuth={setAuth} />} />
-          <Route path="/*" element={<Home />} />
+          <Route path="/signup" element={<Signup setAuth={setAuth} />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/recommended" element={<Recommeded />} />
+          <Route path="/trending" element={<Trending />} />
           <Route path="/dashboard/*" element={<Dashboard />} />
         </Routes>
         {isSongPlaying && (

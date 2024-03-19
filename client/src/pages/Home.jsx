@@ -5,6 +5,7 @@ import { useStateValue } from "../Context/StateProvider";
 import { motion } from "framer-motion";
 import { Filter, Sidebar, SearchBar } from "../components";
 import { useUpdateFlag } from "../Context/updatedFlag";
+import StaticSideBar from "./StaticSideBar";
 
 const Home = () => {
   const [
@@ -24,6 +25,7 @@ const Home = () => {
   const [filteredSongs, setFilteredSongs] = useState(null);
   const [allSongsHere, setAllSongsHere] = useState([]);
   const { flag } = useUpdateFlag();
+
   useEffect(() => {
     if (!allSongs) {
       getAllSongs().then((data) => {
@@ -47,6 +49,10 @@ const Home = () => {
           data.artist.includes(artistFilter)
       );
       setFilteredSongs(filtered);
+      dispatch({
+        type: actionType.SET_ALL_SONGS,
+        allSongs: filtered,
+      });
     } else {
       setFilteredSongs(null);
     }
@@ -93,25 +99,30 @@ const Home = () => {
   }, [languageFilter]);
 
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center bg-primary">
-      <Sidebar />
-      <SearchBar />
+    <div className="grid grid-cols-12 min-h-[100vh]">
+      <div className="col-span-2 border-r">
+        <StaticSideBar />
+      </div>
+      <div className="col-span-10 w-full h-auto flex flex-col items-center justify-center bg-primary">
+        <Sidebar />
+        <SearchBar />
 
-      {searchTerm.length > 0 && (
-        <p className="my-4 text-base text-textColor">
-          Searched for :
-          <span className="text-xl text-cartBg font-semibold">
-            {searchTerm}
-          </span>
-        </p>
-      )}
+        {searchTerm.length > 0 && (
+          <p className="my-4 text-base text-textColor">
+            Searched for :
+            <span className="text-xl text-cartBg font-semibold">
+              {searchTerm}
+            </span>
+          </p>
+        )}
 
-      <Filter setFilteredSongs={setFilteredSongs} />
+        {/* <Filter setFilteredSongs={setFilteredSongs} /> */}
 
-      <div className="w-full h-auto flex items-center justify-evenly gap-4 flex-wrap p-4">
-        <HomeSongContainer
-          musics={filteredSongs ? filteredSongs : allSongsHere}
-        />
+        <div className="w-full h-auto flex items-center justify-evenly gap-4 flex-wrap p-4 mt-9">
+          <HomeSongContainer
+            musics={filteredSongs ? filteredSongs : allSongsHere}
+          />
+        </div>
       </div>
     </div>
   );

@@ -35,7 +35,7 @@ export const AlbumCard = ({ data, index }) => {
   const [alert, setAlert] = useState(false);
   const [alertMsg, setAlertMsg] = useState(null);
 
-  const [{ allAlbums }, dispatch] = useStateValue();
+  const [{ allAlbums, user }, dispatch] = useStateValue();
 
   const deleteObject = (id) => {
     deleteAlbumById(id).then((res) => {
@@ -75,13 +75,15 @@ export const AlbumCard = ({ data, index }) => {
 
       <p className="text-base text-textColor">{data.name}</p>
 
-      <motion.i
-        className="absolute bottom-2 right-2"
-        whileTap={{ scale: 0.75 }}
-        onClick={() => setIsDelete(true)}
-      >
-        <MdDelete className=" text-gray-400 hover:text-red-400 text-xl cursor-pointer" />
-      </motion.i>
+      {user?.user?.role === "admin" && (
+        <motion.i
+          className="absolute bottom-2 right-2"
+          whileTap={{ scale: 0.75 }}
+          onClick={() => setIsDelete(true)}
+        >
+          <MdDelete className=" text-gray-400 hover:text-red-400 text-xl cursor-pointer" />
+        </motion.i>
+      )}
 
       {isDelete && (
         <motion.div

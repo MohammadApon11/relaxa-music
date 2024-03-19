@@ -4,7 +4,7 @@ const userScheme = mongoose.Schema(
   {
     name: {
       type: String,
-      required: true,
+      required: false,
     },
     email: {
       type: String,
@@ -12,7 +12,7 @@ const userScheme = mongoose.Schema(
     },
     imageURL: {
       type: String,
-      required: true,
+      required: false,
     },
     user_id: {
       type: String,
