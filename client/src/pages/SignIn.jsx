@@ -90,7 +90,7 @@ const Signup = ({ setAuth }) => {
   };
 
   return (
-    <div className="flex items-center justify-center h-[100vh]">
+    <div className="flex items-center justify-center">
       <div className="px-14 py-6 bg-[#141718]">
         <IoMdMusicalNotes className="mx-auto text-red-500 text-4xl" />
         <h1 className="text-white text-center text-4xl mt-3">
@@ -105,16 +105,19 @@ const Signup = ({ setAuth }) => {
             <p>Signup with Google</p>
           </div>
         </div>
-        <div className=" mt-5 text-textColor flex items-center justify-between border">
-          <div className="border p-3">
-            <p>Admin credentials:</p>
-            <p>email: wegro@admin.com</p>
-            <p>email: 12345aA!</p>
-          </div>
-          <div className="border p-3">
-            <p>Member credentials:</p>
-            <p>email: wegro@member.com</p>
-            <p>email: 12345aA!</p>
+        <div className="mt-5 text-textColor border">
+          <p className="text-center py-2 ">Testing Purpose</p>
+          <div className=" flex items-center justify-between ">
+            <div className="border-r border-t p-3">
+              <p>Admin credentials:</p>
+              <p>Email: wegro@admin.com</p>
+              <p>Password: 12345aA!</p>
+            </div>
+            <div className="border-t p-3">
+              <p>Member credentials:</p>
+              <p>Email: wegro@member.com</p>
+              <p>Password: 12345aA!</p>
+            </div>
           </div>
         </div>
         <form
@@ -126,7 +129,7 @@ const Signup = ({ setAuth }) => {
               Email Address<span className="text-red-500">*</span>
             </p>
             <input
-              className="w-[360px] p-4 bg-transparent border border-gray-700 text-textColor outline-none"
+              className="w-full p-4 bg-transparent border border-gray-700 text-textColor outline-none"
               type="text"
               {...register("email", { required: true })}
               placeholder="Email"
@@ -142,7 +145,7 @@ const Signup = ({ setAuth }) => {
             <p className="text-white text-[14px] mb-3">
               Password <span className="text-red-500">*</span>
             </p>
-            <div className="w-[360px] relative">
+            <div className="w-full relative">
               <input
                 className="w-full p-4 bg-transparent border border-gray-700 text-textColor outline-none"
                 type={type}
