@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { actionType } from "../Context/reducer";
 import { useStateValue } from "../Context/StateProvider";
 import StaticSideBar from "./StaticSideBar";
+import { baseURL } from "../api";
 
 const Recommeded = () => {
   const [data, setData] = useState(null);
@@ -24,9 +25,7 @@ const Recommeded = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(
-          "http://localhost:5000/api/songs/getAll"
-        );
+        const response = await axios.get(`${baseURL}api/songs/getAll`);
         setData(response?.data?.data);
       } catch (error) {
         console.error("Error fetching data:", error);

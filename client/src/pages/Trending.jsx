@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { actionType } from "../Context/reducer";
 import { useStateValue } from "../Context/StateProvider";
 import StaticSideBar from "./StaticSideBar";
+import { baseURL } from "../api";
 
 const Trending = () => {
   const [data, setData] = useState(null);
@@ -13,7 +14,7 @@ const Trending = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/songs/getAll"
+          `${baseURL}api/songs/getAll`
         );
         setData(response?.data?.data);
         setLoading(false);

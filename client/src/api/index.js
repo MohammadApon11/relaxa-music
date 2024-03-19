@@ -1,5 +1,5 @@
 import axios from "axios";
-const baseURL = "https://relaxa-music-server.vercel.app/";
+export const baseURL = "https://relaxa-music.vercel.app/";
 
 export const validateUser = async (token) => {
   try {
