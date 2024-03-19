@@ -1,10 +1,17 @@
 
 # RELAXA MUSIC
-
 A brief instructions so that we can run this project on a local machine.
 
-## Documentation
+## for testing 
+admin credential :
+email: wegro@admin.com
+password: 123435aA!
 
+member credential: 
+email: wegro@member.com
+password: 123435aA!
+
+## Documentation
 Discover a world of melodies on our music website, where rhythm meets passion. Explore a vast library of tracks spanning genres from classical to contemporary. Dive into artist profiles, concert schedules, and curated playlists tailored to your taste. Whether you're a casual listener or a devoted aficionado, immerse yourself in the harmony of sound with our platform.
 
 ## Demo
